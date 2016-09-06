@@ -28,16 +28,16 @@ def effect_roll(str_input):
 
 def main():
     '''This regex will give the pattern for the rolls'''
-    effect_roll_rx = re.compile('^\d+\s*[d|D]{1}\s*\d+\s*([+]?|[-]?)\s*\d+$')
+    effect_roll_rx = re.compile('^\d+\s*[d|D]{1}\s*\d+\s*([+]?|[-]?){1}\s*\d+$')
     simple_roll_rx = re.compile('^\d+\s*[d|D]{1}\s*\d+$')
     while True:
         raw_roll = raw_input('What you want to roll?  ')
-        if effect_roll_rx.match(raw_roll):
-            print effect_roll(raw_roll)
-        elif simple_roll_rx.match(raw_roll):
+        if simple_roll_rx.match(raw_roll):
             to_roll = raw_roll.split('d')
             print simple_roll(xrange(1, int(to_roll[1]) + 1),
                               int(to_roll[0]))
+        elif effect_roll_rx.match(raw_roll):
+            print effect_roll(raw_roll)
         else:
             print "There was an error with the input, please check:  " + raw_roll
 

@@ -7,10 +7,7 @@ def simple_roll(die, times):
     list[die]: list with the numbers that will display the die
     int[times]: number of rolls to perform in the given list
     '''
-    result = []
-    for i in xrange(times):
-        roll = random.choice(die)
-        result.append(roll)
+    result = choice(die, k=times)
     return result
 
 
